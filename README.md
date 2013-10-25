@@ -12,7 +12,7 @@ to see if there's a match (based on Operation rules and combining Algorithms).
 #### Terminology:
 
 - **PolicySet:** Set of Policy objects
-- **Policy:** Defines the policies to evaluate for authoriation. Policies contain sets of Rules
+- **Policy:** Defines the policies to evaluate for authorization. Policies contain sets of Rules
     that are evaluated and the results are combined according to the Policy's Algorithm for an
     overall Policy pass/fail status
 - **Rule:** A Rule is made of of a set of Matches (inside a Target) that are used to evaluate
