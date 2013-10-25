@@ -1,5 +1,4 @@
 <?php
-
 namespace Xacmlphp;
 
 /**
@@ -9,22 +8,33 @@ namespace Xacmlphp;
  */
 class PolicySet
 {
+
     /**
      * Set of Policies
+     * 
      * @var array
      */
     private $policies = array();
 
     /**
      * Combining algorithm
+     * 
      * @var \Xacmlphp\Algorithm
      */
     private $algorithm = null;
 
     /**
+     * Policy set description
+     * 
+     * @var string
+     */
+    private $description = null;
+
+    /**
      * Add a new policy to the set
      *
-     * @param \Xacmlphp\Policy $policy Policy object
+     * @param \Xacmlphp\Policy $policy
+     *            Policy object
      * @return \Xacmlphp\PolicySet
      */
     public function addPolicy(\Xacmlphp\Policy $policy)
@@ -46,7 +56,8 @@ class PolicySet
     /**
      * Set the PolicySet combining algorithm
      *
-     * @param \Xacmlphp\Algorithm $algorithm Combining algorithm
+     * @param \Xacmlphp\Algorithm $algorithm
+     *            Combining algorithm
      * @return \Xacmlphp\PolicySet
      */
     public function setAlgorithm(\Xacmlphp\Algorithm $algorithm)
@@ -63,5 +74,16 @@ class PolicySet
     public function getAlgorithm()
     {
         return $this->algorithm;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+        return $this;
     }
 }

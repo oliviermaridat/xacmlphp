@@ -1,2 +1,5 @@
 vendor/
 *.lock
+.buildpath
+.project
+.settings/*
