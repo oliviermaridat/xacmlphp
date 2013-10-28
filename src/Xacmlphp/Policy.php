@@ -1,5 +1,4 @@
 <?php
-
 namespace Xacmlphp;
 
 /**
@@ -9,56 +8,67 @@ namespace Xacmlphp;
  */
 class Policy
 {
+
     /**
      * Set of policy rules
+     * 
      * @var array
      */
     private $rules = array();
 
     /**
      * Policy target
+     * 
      * @var Resource/action/environment it applies to
      */
     private $target = null;
 
     /**
      * Combining algorithm
+     * 
      * @var \Xacmlphp\Algorithm
      */
     private $algorithm = null;
 
     /**
      * Version of the policy
+     * 
      * @var string
      */
     private $version = '1.0';
 
     /**
      * Obligations to perform after match
+     * 
      * @var array
      */
     private $obligations = array();
 
     /**
      * Conditional advice to follow after match
+     * 
      * @var array
      */
     private $advice = array();
 
     /**
      * Description of the policy
+     * 
      * @var string
      */
     private $description = '';
 
     /**
-     * Policy ID (Ex. "Policy1")
+     * Policy ID (Ex.
+     * "Policy1")
+     * 
      * @var string
      */
     private $id = null;
 
     /**
      * Action instance
+     * 
      * @var \Xacmlphp\Action
      */
     private $action = null;
@@ -66,7 +76,8 @@ class Policy
     /**
      * Add a new Rule to the Policy
      *
-     * @param \Xacmlphp\Rule $rule Policy rule object
+     * @param \Xacmlphp\Rule $rule
+     *            Policy rule object
      * @return \Xacmlphp\Policy instance
      */
     public function addRule(\Xacmlphp\Rule $rule)
@@ -88,8 +99,9 @@ class Policy
     /**
      * Set the policy target
      *
-     * @param string $target Target path of related
-     *   resource/action/environment
+     * @param string $target
+     *            Target path of related
+     *            resource/action/environment
      * @return \Xacmlphp\Policy instance
      */
     public function setTarget($target)
@@ -111,7 +123,7 @@ class Policy
     /**
      * Set the Policy description
      *
-     * @param string $description
+     * @param string $description            
      * @return \Xacmlphp\Policy instance
      */
     public function setDescription($description)
@@ -133,15 +145,16 @@ class Policy
     /**
      * Set the combining Algorithm to use for Policy's rule results
      *
-     * @param mixed $algorithm Algorithm name or object instance
+     * @param mixed $algorithm
+     *            Algorithm name or object instance
      * @return \Xacmlphp\Policy instance
      */
     public function setAlgorithm($algorithm)
     {
         if (is_string($algorithm)) {
-            $algorithmClass = '\\Xacmlphp\\Algorithm\\'.$algorithm;
-            if (!class_exists($algorithmClass)) {
-                throw new \InvalidArgumentException('Invalid algorithm '.$algorithm);
+            $algorithmClass = '\\Xacmlphp\\Algorithm\\' . $algorithm;
+            if (! class_exists($algorithmClass)) {
+                throw new \InvalidArgumentException('Invalid algorithm ' . $algorithm);
             }
             $algorithm = new $algorithmClass();
         }
@@ -162,7 +175,8 @@ class Policy
     /**
      * Set the Polidy ID
      *
-     * @param string $id Policy ID
+     * @param string $id
+     *            Policy ID
      * @return string Policy ID
      */
     public function setId($id)
@@ -184,7 +198,8 @@ class Policy
     /**
      * Add an action
      *
-     * @param \Xacmlphp\Action $action Action instance
+     * @param \Xacmlphp\Action $action
+     *            Action instance
      */
     public function addAction(\Xacmlphp\Action $action)
     {
@@ -201,4 +216,26 @@ class Policy
         return $this->action;
     }
 
+    /**
+     * Get the current Policy version
+     *
+     * @return string Policy version
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * Set the Polidy version
+     *
+     * @param string $id
+     *            Policy version
+     * @return string Policy version
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+        return $this;
+    }
 }
